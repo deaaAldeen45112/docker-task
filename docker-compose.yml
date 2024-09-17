@@ -1,0 +1,62 @@
+version: '3'
+services:
+  auth-service:
+    build: ./auth
+    container_name: auth-service
+    ports:
+      - "8001:8001"
+  
+
+  upload-video-service:
+    build: ./upload-video-service
+    container_name: upload_video
+    ports:
+      - "8002:8002"
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysql-db:3306/video_db
+    depends_on:
+      - auth-service
+      - mysql-db
+      - file-system-service
+
+ 
+  video-streaming-service:
+    build: ./video-streaming
+    ports:
+      - "8004:8004"
+    environment:
+      - spring.datasource.url=jdbc:mysql://mysql-db:3306/video_db
+    depends_on:
+      - auth-service
+      - mysql-db
+      - file-system-service
+
+
+  file-system-service:
+    build: ./file-service 
+    container_name: file-system-service
+    ports:
+      - "8003:8003"
+    volumes:
+      # - ./file-service/target/file-uploads:/file-uploads
+      - file_data:/file-uploads
+
+  mysql-db:
+    image: mysql:5.7
+    container_name: mysql-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql-db/init.sql:/docker-entrypoint-initdb.d/init.sql
+  
+
+volumes:
+  mysql_data:
+  file_data:
+  # videos:
+
+# networks:
+#   backend:
