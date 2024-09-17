@@ -13,3 +13,10 @@ The system consists of the following microservices:
 - **Authentication Service**: Validates user credentials.
 - **File System Service**: Manages file storage and retrieval (local file system or cloud storage like AWS S3).
 - **MySQL DB Service**: Stores video metadata including file paths/URLs.
+
+## Documentation
+A full project report is available in `docker_report.pdf`. 
+
+## Video Presentation
+A video presentation demonstration of the Docker setup is available on YouTube:  
+[Watch the Video Presentation](https://www.youtube.com/watch?v=ja82c77TEF0&t=1s)
