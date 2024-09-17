@@ -18,5 +18,5 @@ The system consists of the following microservices:
 A full project report is available in `docker_report.pdf`. 
 
 ## Video Presentation
-A video presentation demonstration of the Docker setup is available on YouTube:  
-[Watch the Video Presentation](https://www.youtube.com/watch?v=ja82c77TEF0&t=1s)
+A video presentation demonstration of the project setup is available on YouTube:  
+[Watch the Video Presentation](https://www.youtube.com/watch?v=7uDP1g6dvRk&t=1s)
